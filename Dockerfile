@@ -36,5 +36,5 @@ ENV SPORTSDB_API_KEY=123
 # Debug: List contents
 RUN ls -la
 
-# Entry command with retry logic
-CMD ["python", "-u", "final.py"]
+# Change CMD to keep container running
+CMD ["tail", "-f", "/dev/null"]
