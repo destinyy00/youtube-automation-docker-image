@@ -265,6 +265,7 @@ def search_youtube(query, event_date):
                 
         return None
             
+            
     except Exception as e:
         print(f"❌ YouTube search error: {e}")
         return None
