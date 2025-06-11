@@ -270,17 +270,24 @@ def search_youtube(query, event_date):
         return None
 
 def download_video(url, event_id):
-    """Download video using test.py's working configuration"""
+    """Download video with enhanced error handling and retry logic"""
     try:
         output_template = f"videos/{event_id}.%(ext)s"
         ydl_opts = {
-            'format': 'bv*[height<=1080][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best',
-            'merge_output_format': 'mp4',
-            'outtmpl': output_template,
-            'quiet': False,
-            'postprocessors': [{
-                'key': 'FFmpegVideoConvertor',
-                'preferedformat': 'mp4'
+            "format": "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best",
+            "merge_output_format": "mp4",
+            "outtmpl": output_template,
+            "quiet": False,
+            "no_warnings": False,
+            "cookiefile": "cookies.txt",
+            "extract_flat": False,
+            "nocheckcertificate": True,
+            "retries": 10,
+            "fragment_retries": 10,
+            "ignoreerrors": True,
+            "postprocessors": [{
+                "key": "FFmpegVideoConvertor",
+                "preferedformat": "mp4"
             }]
         }
         
@@ -290,7 +297,7 @@ def download_video(url, event_id):
         return f"videos/{event_id}.mp4"
         
     except Exception as e:
-        print(f"❌ Failed to download video: {e}")
+        print(f"❌ Failed to download video: {str(e)}")
         return None
 
 def add_branding(video_path, event_id):
