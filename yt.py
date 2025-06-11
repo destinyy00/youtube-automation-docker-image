@@ -4,7 +4,7 @@ import yt_dlp
 
 # Placeholder API keys (replace with your actual keys)
 SPORTSDB_API_KEY = "123"
-YOUTUBE_API_KEY = "AIzaSyASc3znv7yRJc2g9Re-e0L3LGQ6UsXcNv0"
+YOUTUBE_API_KEY = ""
 
 def get_recent_matches(date_str, sport=None, league_id=None):
     """
