@@ -5,8 +5,8 @@ import re
 import os
 
 # Placeholder API keys
-SPORTSDB_API_KEY = "123"
-YOUTUBE_API_KEY = "AIzaSyASc3znv7yRJc2g9Re-e0L3LGQ6UsXcNv0"
+SPORTSDB_API_KEY = ""
+YOUTUBE_API_KEY = ""
 
 # Make sure the videos folder exists
 os.makedirs("videos", exist_ok=True)
